@@ -4,26 +4,25 @@ using UnityEngine;
 
 namespace AbstractFactory {
     public class CharacterStat {
-        public float attackDamage;
-        public float abilityPower;
-        public float movementSpeed;
-        public float health;
-        public float cost;
-        public float armor;
-        public float magicResistance;
-        public float abilityHaste;
+        public float attackDamage = 50;
+        public float abilityPower = 0;
+        public float movementSpeed = 330;
+        public float health = 500;
+        public float cost = 350;
+        public float armor = 24;
+        public float magicResistance = 30;
+        public float abilityHaste = 0;
 
-        public static CharacterStat BasiCharacterStat
-            => new CharacterStat() {
-                attackDamage = 60,
-                abilityPower = 0,
-                movementSpeed = 325,
-                health = 550,
-                cost = 400,
-                armor = 24,
-                magicResistance = 30,
-                abilityHaste = 0
-            };
+        public static CharacterStat AllZero => new CharacterStat() {
+            attackDamage = 0,
+            abilityPower = 0,
+            movementSpeed = 0,
+            health = 0,
+            cost = 0,
+            armor = 0,
+            magicResistance = 0,
+            abilityHaste = 0
+        };
     }
 }
 
