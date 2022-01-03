@@ -45,10 +45,13 @@ namespace AbstractFactory {
             sb.AppendLine($"AP: {character.TotalAbilityPower}");
             sb.AppendLine($"HP: {character.OriginStat.health}");
             sb.AppendLine($"MP: {character.OriginStat.cost}");
+            sb.AppendLine($"스킬 가속: {character.AdditionalStat.abilityHaste} (= 재사용 대기시간 {((1f - character.GetAbilityReductionPercent()) * 100f):0.0}% 감소)");
             sb.AppendLine();
             
             foreach (var skill in character.GetSkillList) {
-                sb.AppendLine($"[{skill.Name} | Lv.{skill.CurrentLevel}] " + (skill.CanUseNow() ? "(사용 가능)" : $"(남은 쿨타임: {skill.RemainCoolDown:0.0} / {(skill.OriginCoolDown * character.GetAbilityReductionPercent()):0.0})"));
+                sb.AppendLine($"[{skill.Name} | Lv.{skill.CurrentLevel}] " + (skill.CanUseNow() ? 
+                    "(사용 가능)" : 
+                    $"(남은 쿨타임: {skill.RemainCoolDown:0.0} / {(skill.OriginCoolDown * character.GetAbilityReductionPercent()):0.0}초)"));
             }
 
             return sb.ToString();

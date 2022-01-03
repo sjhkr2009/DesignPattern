@@ -15,9 +15,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Abstract Factory/UICanvasController.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -69,6 +66,7 @@
       <workItem from="1641122851989" duration="853000" />
       <workItem from="1641123733852" duration="219000" />
       <workItem from="1641123968168" duration="5520000" />
+      <workItem from="1641216983409" duration="985000" />
     </task>
     <servers />
   </component>

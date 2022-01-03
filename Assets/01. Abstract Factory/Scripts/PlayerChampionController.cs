@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 namespace AbstractFactory {
     public class PlayerChampionController : MonoBehaviour {
@@ -16,13 +15,19 @@ namespace AbstractFactory {
         private List<SkillBase> skills;
         
         private void Start() {
+#if UNITY_EDITOR
+            UnityEditor.Selection.activeGameObject = gameObject;
+#endif
             CreateCharacter();
             UpdateStat();
         }
 
         void CreateCharacter() {
-            var factory = CharacterFactory.Create(selectedChampion);
+            var factory = CharacterFactory.CreateFactory(selectedChampion);
+            // 1. 팩토리를 인자로 캐릭터의 생성자를 직접 호출 -> 추상 객체의 생성자를 노출해야 하지만, 팩토리를 통해서만 생성하도록 강제할 수 있다.
             myCharacter = new Character(factory);
+            // 2. 팩토리의 메서드를 통해 캐릭터를 생성 -> 클라이언트가 추상 객체의 생성자를 호출하지 않아도 되지만, 세부 객체의 팩토리가 필요할 때는?
+            myCharacter = factory.Create();
 
             skills = myCharacter.GetSkillList;
             currentChampion = selectedChampion;
