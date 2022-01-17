@@ -42,6 +42,10 @@ namespace FactoryMethod {
             Dragon = dragonCreator.MakeDragon(dragonType);
             
             Debug.Log($"{dragonType} 드래곤이 소환되었습니다! (공격력: {Dragon.AttackDamage} / 공격속도: {Dragon.AttackSpeed})");
+            
+#if UNITY_EDITOR
+            UnityEditor.Selection.activeGameObject = GameObject.Find("Player") ?? gameObject;
+#endif
         }
 
         public void SetTarget(IUnit target) {

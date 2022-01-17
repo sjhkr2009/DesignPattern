@@ -27,9 +27,25 @@ namespace FactoryMethod {
         public override int Type { get; protected set; }
         public override float AttackDamage { get; protected set; }
         public override float AttackSpeed { get; protected set; }
+        public override float Hp { get; protected set; } = 2000f;
+        public override float RespawnCooldown { get; protected set; } = 300f;
+
         public override void Attack(IUnit target) {
-            Debug.Log($"<color=lime>{(DragonType)} 드래곤의 공격! | 피해량: {AttackDamage} + {target.GetHp() * 0.07f}({target.GetGameObject().name} 현재 체력의 7%)</color>");
-            target.OnHit(AttackDamage + target.GetHp() * 0.07f);
+            float damage = AttackDamage + target.GetHp() * 0.07f;
+            Debug.Log($"<color=lime>{(DragonType)} 드래곤의 공격! | 피해량: {damage} = {AttackDamage} + {target.GetHp() * 0.07f}({target.GetGameObject().name} 현재 체력의 7%)</color>");
+            target.OnHit(damage);
+        }
+
+        public override void OnHit(float damage) {
+            base.OnHit(damage);
+            if (Hp <= 0f) {
+                Hp = 0f;
+                DragonSpawnTimer.OnSlainDragon(this);
+            }
+        }
+
+        public void SetHp(float value) {
+            Hp = value;
         }
     }
 
@@ -57,6 +73,8 @@ namespace FactoryMethod {
     }
     public class ElderDragon : DragonImplBase {
         public ElderDragon() : base(DragonType.Elder, 100f, 0.5f) { }
+
+        public override float RespawnCooldown { get; protected set; } = 360f;
     }
     
 }

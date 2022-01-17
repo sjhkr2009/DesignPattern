@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace AbstractFactory {
-    public class UICanvasController : MonoBehaviour {
+    public class UICanvasController1 : MonoBehaviour {
         [SerializeField] private PlayerChampionController reference;
         [SerializeField] private Text text;
         [SerializeField] private Button skillQ;

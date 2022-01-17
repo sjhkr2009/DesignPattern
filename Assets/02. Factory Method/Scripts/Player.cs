@@ -1,16 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using FactoryMethod;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FactoryMethod {
     public class Player : MonoBehaviour, IUnit {
-        [SerializeField, ReadOnly] private bool isBattle = false;
+        public float damagePerSecond = 100f;
+        [ReadOnly] public bool isBattle = false;
         [SerializeField, ReadOnly] private float hp = 1000f;
 
-        [Button("체력 설정")]
+        [Button("플레이어 체력 설정")]
         void SetHp(float value = 1000f) {
             hp = Mathf.Clamp(value, 0, 10000);
         }
@@ -46,6 +43,13 @@ namespace FactoryMethod {
                 Debug.Log("<color=red>플레이어가 사망하였습니다.</color>");
                 ReleaseTarget();
             }
+        }
+        
+        private void Update() {
+            if (!isBattle) return;
+            if (DragonSpawnManager.Instance.Dragon == null) return;
+            
+            DragonSpawnManager.Instance.Dragon.OnHit(damagePerSecond * Time.deltaTime);
         }
     }
 }
