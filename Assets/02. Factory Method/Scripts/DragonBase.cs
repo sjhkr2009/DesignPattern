@@ -1,6 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace FactoryMethod {
+    public static class DragonFactory {
+        public static Func<int, DragonBase> FactoryMethod;
+    }
     public abstract class DragonBase {
         public abstract int Type { get; protected set; }
         public abstract float AttackDamage { get; protected set; }

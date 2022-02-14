@@ -19,6 +19,7 @@ namespace FactoryMethod {
 
         private void Awake() {
             _instance = this;
+            DragonFactory.FactoryMethod = DragonCreator.MakeDragon;
         }
 
         private void Start() {
@@ -38,8 +39,7 @@ namespace FactoryMethod {
                 dragonHandler = GetComponent<DragonHandler>();
             }
             
-            DragonCreator dragonCreator = new DragonCreator();
-            Dragon = dragonCreator.MakeDragon(dragonType);
+            Dragon = DragonFactory.FactoryMethod?.Invoke((int)dragonType) as DragonImplBase;
             
             Debug.Log($"{dragonType} 드래곤이 소환되었습니다! (공격력: {Dragon.AttackDamage} / 공격속도: {Dragon.AttackSpeed})");
             

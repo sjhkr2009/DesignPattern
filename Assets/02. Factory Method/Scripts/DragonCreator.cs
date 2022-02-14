@@ -5,8 +5,8 @@ using System.Linq;
 using UnityEngine;
 
 namespace FactoryMethod {
-    public class DragonCreator : DragonFactory {
-        public override DragonBase MakeDragon(int type) {
+    public static class DragonCreator {
+        public static DragonBase MakeDragon(int type) {
             if (type > (int)Enum.GetValues(typeof(DragonType)).Cast<DragonType>().Max()) {
                 throw new ArgumentOutOfRangeException($"DragonType에 {type}번 타입이 정의되어있지 않습니다.");
             }
@@ -26,10 +26,6 @@ namespace FactoryMethod {
             }
 
             return dragon;
-        }
-        
-        public DragonImplBase MakeDragon(DragonType dragonType) {
-            return MakeDragon((int) dragonType) as DragonImplBase;
         }
     }
 }
