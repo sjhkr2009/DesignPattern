@@ -1,10 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace FactoryMethod {
     public static class DragonFactory {
-        public static Func<int, DragonBase> FactoryMethod;
+        private static Func<int, DragonBase> FactoryMethod;
+        public static void Initialize(Func<int, DragonBase> factoryMethod) {
+            FactoryMethod = factoryMethod;
+        }
+        public static DragonBase Create(int type) => FactoryMethod?.Invoke(type);
+        public static T Create<T>(int type) where T : DragonBase
+            => FactoryMethod?.Invoke(type) as T;
     }
+    
     public abstract class DragonBase {
         public abstract int Type { get; protected set; }
         public abstract float AttackDamage { get; protected set; }
