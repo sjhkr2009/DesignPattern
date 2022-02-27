@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FactoryMethod {
-    public class Player : MonoBehaviour, IUnit {
+    public class Player02 : MonoBehaviour, IUnit {
         public float damagePerSecond = 100f;
         [ReadOnly] public bool isBattle = false;
         [SerializeField, ReadOnly] private float hp = 1000f;

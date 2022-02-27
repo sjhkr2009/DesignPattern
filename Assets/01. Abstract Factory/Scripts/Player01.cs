@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace AbstractFactory {
-    public class PlayerChampionController : MonoBehaviour {
+    public class Player01 : MonoBehaviour {
         [SerializeField] private ChampionIndex selectedChampion;
         [SerializeField, Range(1, 5)] private int skillLevel = 1;
         [SerializeField, Range(0, 300)] private int attackDamage;

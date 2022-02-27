@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace FactoryMethod {
     public class UICanvasController2 : MonoBehaviour {
-        [SerializeField, BoxGroup("Scene Info")] private Player player;
+        [SerializeField, BoxGroup("Scene Info")] private Player02 player;
         [SerializeField, BoxGroup("Scene Info")] private DragonHandler dragonHandler;
         
         [SerializeField, BoxGroup("Battle Info")] private Text isBattle;

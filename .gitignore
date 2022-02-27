@@ -39,3 +39,5 @@ sysinfo.txt
 
 #custom
 Assets/Plugins/Sirenix/Demos/*.meta
+.idea/
+*.csproj
