@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Adapter {
-    public interface ISkillHandler<T> {
-        void Activate(T weapon);
+    public static class SkillController {
+        public static void UseSkill<T>() {
+            
+        }
     }
 }

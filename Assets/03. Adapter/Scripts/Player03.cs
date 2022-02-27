@@ -6,43 +6,76 @@ using UnityEngine;
 
 namespace Adapter {
     public class Player03 : MonoBehaviour {
-        [SerializeField] private CainSkillAdapter adapter;
-        [ShowInInspector]
+        private CainSkillAdapter adapter;
+
+        private bool isPlaying = false;
+        [SerializeField, HideIf("isPlaying")] private float attackDamage = 100;
+        [ShowInInspector, ShowIf("isPlaying")]
         private float AttackDamage {
-            get => weapon?.AttackPower ?? -1;
+            get => weapon?.AttackPower ?? attackDamage;
             set {
-                if (weapon == null) weapon = new Cain();
-                weapon.AttackPower = value;
+                if (weapon != null) weapon.AttackPower = value;
             }
         }
 
-        private Cain weapon = new Cain {AttackPower = 100};
+        private IWeapon weapon;
+
+        public enum WeaponType {
+            Bow,
+            Sword,
+            Claw,
+            Cain
+        }
+
+        private WeaponType type = WeaponType.Bow;
+
+        [ShowInInspector] private WeaponType weaponType {
+            get => type;
+            set {
+                type = value;
+                weapon = type switch {
+                    WeaponType.Bow => new Bow {AttackPower = AttackDamage},
+                    WeaponType.Sword => new OneHandedSword {AttackPower = AttackDamage},
+                    WeaponType.Claw => new Claw {AttackPower = AttackDamage},
+                    WeaponType.Cain => new Cain {AttackPower = AttackDamage}
+                };
+            }
+        }
 
         private void Start() {
 #if UNITY_EDITOR
             UnityEditor.Selection.activeGameObject = gameObject;
+            isPlaying = true;
 #endif
+            if (!adapter) adapter = GetComponent<CainSkillAdapter>();
+            weaponType = type;
         }
 
         [Button("쿼드러플 스로우")]
         void DoQuadrupleThrow() {
-            var handler = new QuadrupleThrow();
-            var claw = adapter.Convert<Claw>(weapon);
-            handler.Activate(claw);
+            UseSkill(new QuadrupleThrow());
         }
 
         [Button("레이징 블로우")]
         void DoRaisingBlow() {
-            var handler = new RaisingBlow();
-            var sword = adapter.Convert<OneHandedSword>(weapon);
-            handler.Activate(sword);
+            UseSkill(new RaisingBlow());
         }
         
         [Button("언카운터블 애로우")]
         void DoUncountableArrow() {
-            var handler = new UncountableArrow();
-            var bow = adapter.Convert<Bow>(weapon);
-            handler.Activate(bow);
+            UseSkill(new UncountableArrow());
+        }
+
+        void UseSkill<T>(ISkillHandler<T> handler) where T : IWeapon, new() {
+            if (weapon is Cain cain) {
+                adapter.ActivateByCain(handler, cain);
+                return;
+            }
+            if (!(weapon is T wp)) {
+                Debug.LogError($"<color=yellow>적합한 무기를 장착해야 사용할 수 있습니다.</color>");
+                return;
+            }
+            handler.Activate(wp);
         }
     }
 }
