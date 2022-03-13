@@ -8,7 +8,6 @@ namespace Adapter {
     public class Player03 : MonoBehaviour {
         private CainSkillAdapter adapter;
 
-        private bool isPlaying = false;
         [SerializeField, HideIf("isPlaying")] private float attackDamage = 100;
         [ShowInInspector, ShowIf("isPlaying")]
         private float AttackDamage {
@@ -37,7 +36,8 @@ namespace Adapter {
                     WeaponType.Bow => new Bow {AttackPower = AttackDamage},
                     WeaponType.Sword => new OneHandedSword {AttackPower = AttackDamage},
                     WeaponType.Claw => new Claw {AttackPower = AttackDamage},
-                    WeaponType.Cain => new Cain {AttackPower = AttackDamage}
+                    WeaponType.Cain => new Cain {AttackPower = AttackDamage},
+                    _ => throw new ArgumentOutOfRangeException()
                 };
             }
         }
@@ -45,7 +45,6 @@ namespace Adapter {
         private void Start() {
 #if UNITY_EDITOR
             UnityEditor.Selection.activeGameObject = gameObject;
-            isPlaying = true;
 #endif
             if (!adapter) adapter = GetComponent<CainSkillAdapter>();
             weaponType = type;
