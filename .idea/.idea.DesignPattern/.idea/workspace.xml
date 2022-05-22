@@ -46,7 +46,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Factory Method/Scripts/DragonHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/06. Strategy/Scripts/IPlayerContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.8/Editor/Window/TimelineWindow_TrackGui.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/07. Decorator/Scripts/PlayerStatDecorator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Factory Method/Scripts/DragonSpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/07. Decorator/Scripts/IPlayerModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/EventSystem/SelectableTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5406a456cf734443b3d02a7d123287f1299290/fb/bcb0bfab/ArgumentOutOfRangeException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/04. Observer/Scripts/SkillIconHolder.cs" root0="FORCE_HIGHLIGHTING" />
@@ -65,6 +67,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/05. Composite/Scripts/IItemInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/05. Composite/Scripts/InventoryHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/07. Decorator/Scripts/Player07.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Factory Method/Scripts/DragonImpl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/04. Observer/Scripts/Subject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/04. Observer/Scripts/TimeObserver.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,6 +85,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.45878693" />
     <property name="rider.run.widget.enabled.cache" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -97,10 +101,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3860">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="45008">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3860" />
+      <option name="pid" value="45008" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -129,6 +133,7 @@
       <workItem from="1648371455049" duration="243000" />
       <workItem from="1648371726186" duration="13000" />
       <workItem from="1651885308482" duration="10793000" />
+      <workItem from="1653180991763" duration="11828000" />
     </task>
     <servers />
   </component>
