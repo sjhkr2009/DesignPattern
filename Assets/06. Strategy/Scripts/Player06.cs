@@ -34,7 +34,7 @@ namespace Strategy {
             WeaponController.onWeaponStatusChanged -= OnWeaponStatusStatusChange;
         }
 
-        private void Update() {
+        protected virtual void Update() {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetMouseButtonDown(1)) {
                 WeaponController.DoAttack(transform, null);
             }

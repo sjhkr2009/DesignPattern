@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Strategy {
@@ -15,6 +13,9 @@ namespace Strategy {
 
         public void OnAttack(Transform origin, Transform target) {
             Debug.Log("<color=cyan>화염포 기본 공격</color>");
+            
+            // 08. Template Method 예제 실행을 위해 추가됨
+            new TemplateMethod.InfernumProjectileView().Run(origin, target);
         }
 
         public void OnSkill(Transform origin, Vector3 targetPoint) {
